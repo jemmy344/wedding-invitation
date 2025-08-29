@@ -59,7 +59,7 @@ export default function InvitationPage2() {
                         <CardHeader className="pb-3">
                             <CardTitle className="flex items-center gap-2 text-amber-900">
                                 <Users className="w-5 h-5" />
-                                Bride's Family & Friends Aso-Ebi Details
+                                Bride&apos;s Family &amp; Friends Aso-Ebi Details
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
