@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { QrCode, Download, Gift, Users, Baby } from 'lucide-react';
+import { QrCode, Gift, Users, Baby } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
@@ -154,13 +154,13 @@ export default function InvitationPage2() {
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="yes" id="yes" />
                     <Label htmlFor="yes" className="text-green-700 font-medium">
-                      ✓ Yes, I'll be there!
+                      ✓ Yes, I&apos;ll be there!
                     </Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="no" id="no" />
                     <Label htmlFor="no" className="text-red-700 font-medium">
-                      ✗ Sorry, can't make it
+                      ✗ Sorry, can&apos;t make it
                     </Label>
                   </div>
                   <div className="flex items-center space-x-2">
@@ -191,7 +191,7 @@ export default function InvitationPage2() {
                   </label>
                   {plusOneRequested && (
                     <p className="text-xs text-amber-600 ml-6">
-                      We'll contact you regarding plus-one approval.
+                      We&apos;ll contact you regarding plus-one approval.
                     </p>
                   )}
                 </div>
@@ -237,7 +237,7 @@ export default function InvitationPage2() {
                 <div className="p-3 bg-amber-50 rounded-lg">
                   <p className="font-medium text-amber-800 text-sm mb-2">Plus-One Policy</p>
                   <p className="text-gray-700 text-sm">
-                    This invitation admits only one. If you'd like to attend with a plus one, 
+                    This invitation admits only one. If you&apos;d like to attend with a plus one, 
                     kindly indicate below — approval will be sent accordingly.
                   </p>
                 </div>
@@ -254,7 +254,7 @@ export default function InvitationPage2() {
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-rose-300 to-transparent"></div>
         </div>
         <p className="text-gray-600 mt-4 italic">
-          We can't wait to celebrate with you!
+          We can&apos;t wait to celebrate with you!
         </p>
       </div>
     </div>

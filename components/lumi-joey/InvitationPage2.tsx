@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { QrCode, Download, Gift, Users, Baby } from 'lucide-react';
+import { Gift, Users } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
-import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Separator } from '../ui/separator';
 
@@ -37,7 +36,7 @@ export default function InvitationPage2() {
                         <CardHeader className="pb-3">
                             <CardTitle className="flex items-center gap-2 text-amber-900">
                                 <Users className="w-5 h-5" />
-                                Groom's Family & Friends Aso-Ebi Details
+                                Groom&apos;s Family &amp; Friends Aso-Ebi Details
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
@@ -193,7 +192,7 @@ export default function InvitationPage2() {
                                 <div className="bg-amber-50 p-4 rounded-lg">
                   <h4 className="font-semibold text-amber-900 mb-2">Plus-One Clause:</h4>
                   <p className="text-sm text-amber-800 mb-3">
-                    "This invitation admits only one. If you'd like to attend with a plus one, kindly indicate — approval will be sent accordingly."
+                    &quot;This invitation admits only one. If you&apos;d like to attend with a plus one, kindly indicate — approval will be sent accordingly.&quot;
                   </p>
                   <label className="flex items-center">
                     <input
@@ -236,7 +235,7 @@ export default function InvitationPage2() {
             {/* Footer */}
             <div className="mt-8 text-center">
                 <p className="text-gray-600 mt-4 italic">
-                    We can't wait to celebrate with you!
+                    We can&apos;t wait to celebrate with you!
                 </p>
             </div>
         </div >

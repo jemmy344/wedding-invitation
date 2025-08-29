@@ -1,94 +1,36 @@
-import exampleImage from 'figma:asset/3adedcfc1d7e183b2ecf783ce81955bce1ca0bf6.png';
+import Image from 'next/image';
 
 export default function InvitationPage1() {
     return (
         <div className="relative w-full h-full bg-gradient-to-br from-[#e7d4bd] via-[#e7d4bd] to-amber-50 overflow-hidden shadow-xl rounded-lg">
             {/* Background Floral Elements */}
             <div className="absolute inset-0">
-
                 <div className="absolute -top-90 right-5 w-[38rem] h-[38rem] sm:opacity-90 opacity-40 rotate-360">
-                    <img
-                        src="/Image-lj/flower2.svg"
-                        alt="Floral Sun 4 Upside Down"
-                        className="w-full h-full object-contain"
-                        style={{ pointerEvents: 'none' }}
-                    />
+                    <Image src="/Image-lj/flower2.svg" alt="Floral Sun 4 Upside Down" width={720} height={720} className="w-full h-full object-contain" />
                 </div>
-
                 <div className="absolute -top-25 -right-85 w-[38rem] h-[38rem] opacity-10 rotate-180">
-                    <img
-                        src="/Image-lj/flower.svg"
-                        alt="Floral Sun"
-                        className="w-full h-full object-contain"
-                        style={{ pointerEvents: 'none' }}
-                    />
+                    <Image src="/Image-lj/flower.svg" alt="Floral Sun" width={608} height={608} className="w-full h-full object-contain" />
                 </div>
-
                 <div className="absolute -top-5 right-15 w-[28rem] h-[28rem] sm:opacity-90 opacity-40">
-                    <img
-                        src="/Image-lj/design2.svg"
-                        alt="Floral Sun"
-                        className="w-full h-full object-contain"
-                        style={{ pointerEvents: 'none' }}
-                    />
-                </div> 
-
-                {/* Top Left Florals replaced with flower-sun.png */}
+                    <Image src="/Image-lj/design2.svg" alt="Floral Sun" width={448} height={448} className="w-full h-full object-contain" />
+                </div>
                 <div className="absolute -top-105 -left-55 w-[38rem] h-[38rem] sm:opacity-90 opacity-40 rotate-90">
-                    <img
-                        src="/Image-lj/flower.svg"
-                        alt="Floral Sun"
-                        className="w-full h-full object-contain"
-                        style={{ pointerEvents: 'none' }}
-                    />
+                    <Image src="/Image-lj/flower.svg" alt="Floral Sun" width={608} height={608} className="w-full h-full object-contain" />
                 </div>
-
                 <div className="absolute -top-25 -left-75 w-[38rem] h-[38rem] opacity-10 rotate-180">
-                    <img
-                        src="/Image-lj/flower.svg"
-                        alt="Floral Sun"
-                        className="w-full h-full object-contain"
-                        style={{ pointerEvents: 'none' }}
-                    />
+                    <Image src="/Image-lj/flower.svg" alt="Floral Sun" width={608} height={608} className="w-full h-full object-contain" />
                 </div>
-
                 <div className="absolute -top-5 -left-15 w-[28rem] h-[28rem] sm:opacity-90 opacity-40">
-                    <img
-                        src="/Image-lj/design2.svg"
-                        alt="Floral Sun"
-                        className="w-full h-full object-contain"
-                        style={{ pointerEvents: 'none' }}
-                    />
+                    <Image src="/Image-lj/design2.svg" alt="Floral Sun" width={448} height={448} className="w-full h-full object-contain" />
                 </div>
-
-
-                {/* Bottom Left Florals: flower-sun2.svg */}
                 <div className="absolute -bottom-45 -left-55 w-[38rem] h-[38rem] sm:opacity-90 opacity-40">
-                    <img
-                        src="/Image-lj/flower.svg"
-                        alt="Floral Bottom Left"
-                        className="w-full h-full object-contain"
-                        style={{ pointerEvents: 'none' }}
-                    />
+                    <Image src="/Image-lj/flower.svg" alt="Floral Bottom Left" width={608} height={608} className="w-full h-full object-contain" />
                 </div>
-
-                {/* Center Right Florals: flower-sun3.svg (moved to end) */}
                 <div className="absolute top-1/2 -right-110 transform -translate-y-1/2 w-[34rem] h-[34rem] sm:opacity-90 opacity-40">
-                    <img
-                        src=" /Image-lj/flower.svg"
-                        alt="Floral Sun 3"
-                        className="w-full h-full object-contain"
-                        style={{ pointerEvents: 'none' }}
-                    />
+                    <Image src="/Image-lj/flower.svg" alt="Floral Sun 3" width={544} height={544} className="w-full h-full object-contain" />
                 </div>
-
                 <div className="absolute -bottom-100 -right-15 w-[45rem] h-[45rem] sm:opacity-90 opacity-40 rotate-180">
-                    <img
-                        src="/Image-lj/flower2.svg"
-                        alt="Floral Sun 4 Upside Down"
-                        className="w-full h-full object-contain"
-                        style={{ pointerEvents: 'none' }}
-                    />
+                    <Image src="/Image-lj/flower2.svg" alt="Floral Sun 4 Upside Down" width={720} height={720} className="w-full h-full object-contain" />
                 </div>
             </div>
 
@@ -106,7 +48,7 @@ export default function InvitationPage1() {
 
                 {/* Subtitle */}
                 <p className="text-black text-2xl font-bold text-right mb-2" style={{ fontFamily: 'Glacial Indifference, serif' }}>
-                    You're Invited to Celebrate Our Special Day!
+                    You&apos;re Invited to Celebrate Our Special Day!
                 </p>
 
                 {/* Names */}
@@ -130,16 +72,11 @@ export default function InvitationPage1() {
                     </p>
                 </div>
 
-                {/* Decorative Divider */}
+{/* Decorative Divider */}
                 <div className="flex justify-end">
-                    <img
-                        src="/deco-line.svg"
-                        alt="Decorative Divider"
-                        className="w-[28rem] h-auto"
-                        style={{ pointerEvents: 'none' }}
-                    />
+                    <Image src="/deco-line.svg" alt="Decorative Divider" width={448} height={80} className="w-[28rem] h-auto" />
                 </div>
-
+                
                 {/* Date and Venue */}
                 <div className="flex flex-col sm:flex-row justify-end items-center gap-4 sm:gap-12 mb-2">
                     <div className="text-center mb-2 sm:mb-0">
