@@ -127,14 +127,14 @@ export default function InvitationPage1() {
             <div className="flex flex-col sm:hidden w-full">
               <div className="flex flex-col items-center justify-center flex-1">
                 <div className="text-base font-bold text-amber-800 mb-1 text-center" style={{ fontFamily: 'Glacial Indifference' }}>
-                  10:00 am
+                  12:00 pm
                 </div>
                 <div className="text-sm text-amber-800 text-center" style={{ fontFamily: 'Glacial Indifference' }}>
                   New reservation area Baptist church,<br />
                   New GRA, Iyaganku, Ibadan.
                 </div>
                 <div className="text-base font-bold text-amber-800 mb-1 text-center" style={{ fontFamily: 'Glacial Indifference' }}>
-                  13:00 pm
+                  15:00 pm
                 </div>
                 <div className="text-sm text-amber-800 text-center" style={{ fontFamily: 'Glacial Indifference' }}>
                   Gallani Suites, Abel Awe close,<br />
@@ -147,7 +147,7 @@ export default function InvitationPage1() {
               {/* 10:00 am */}
               <div className="flex flex-col items-end justify-center flex-1">
                 <div className="text-xl font-bold text-amber-800 mb-1" style={{ fontFamily: 'Glacial Indifference' }}>
-                  10:00 am
+                  12:00 pm
                 </div>
               </div>
               {/* Divider */}
@@ -163,7 +163,7 @@ export default function InvitationPage1() {
               {/* 13:00 pm */}
               <div className="flex flex-col items-end justify-center flex-1">
                 <div className="text-xl font-bold text-amber-800 mb-1" style={{ fontFamily: 'Glacial Indifference' }}>
-                  13:00 pm
+                  15:00 pm
                 </div>
               </div>
               {/* Divider */}
