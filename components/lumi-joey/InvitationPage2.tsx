@@ -30,6 +30,28 @@ export default function InvitationPage2() {
             <div className="grid md:grid-cols-2 gap-6">
                 {/* Left Column */}
                 <div className="space-y-6">
+                    {/* Color of the Day Card */}
+                    <Card className="border-amber-200 bg-white rounded-lg shadow-sm">
+                        <CardHeader className="pb-3">
+                            <CardTitle className="flex items-center gap-2 text-amber-900">
+                                <span role="img" aria-label="palette" className="mr-2">🎨</span>
+                                Color of the Day
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <div className="flex flex-col gap-2">
+                                <div className="flex items-center gap-3">
+                                    <span className="font-bold text-amber-700">Mustard Yellow</span>
+                                    <span className="inline-block w-6 h-6 rounded-full border border-amber-300" style={{ background: '#FFD700' }}></span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <span className="font-bold text-[#7B3F00]">Chocolate Brown</span>
+                                    <span className="inline-block w-6 h-6 rounded-full border border-[#7B3F00]" style={{ background: '#7B3F00' }}></span>
+                                </div>
+                                <p className="text-sm text-gray-700 mt-2">Please incorporate these colors into your attire to help us create a beautiful and unified celebration!</p>
+                            </div>
+                        </CardContent>
+                    </Card>
                     {/* Aso-Ebi Details */}
 
                     <Card className="border-amber-100 bg-white rounded-lg shadow-sm">

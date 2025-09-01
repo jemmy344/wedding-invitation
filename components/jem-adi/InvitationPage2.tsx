@@ -31,10 +31,33 @@ export default function InvitationPage2() {
         <p className="text-gray-700">Important Information for Our Special Day</p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        {/* Left Column */}
-        <div className="space-y-6">
-          {/* Aso-Ebi Details */}
+  <div className="grid md:grid-cols-2 gap-6">
+  {/* Left Column */}
+  <div className="space-y-6">
+          {/* Color of the Day Card */}
+          <Card className="border-amber-200 bg-white/80 backdrop-blur-sm">
+            <CardHeader className="pb-3">
+              <CardTitle className="flex items-center gap-2 text-amber-800">
+                <span className="inline-block w-5 h-5 rounded-full" style={{ background: 'linear-gradient(90deg, #CC5500 60%, #7B3F00 100%)' }}></span>
+                Color of the Day
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <p className="text-gray-700 text-sm">
+                Please incorporate these colors into your attire to help us create a beautiful and unified celebration!
+              </p>
+              <div className="flex gap-4 items-center mt-2">
+                <div className="flex flex-col items-center">
+                  <span className="block w-8 h-8 rounded-full border-2 border-orange-700" style={{ backgroundColor: '#CC5500' }}></span>
+                  <span className="text-xs text-orange-700 mt-1">Burnt Orange</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="block w-8 h-8 rounded-full border-2 border-[#7B3F00]" style={{ backgroundColor: '#7B3F00' }}></span>
+                  <span className="text-xs text-[#7B3F00] mt-1">Chocolate Brown</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
           <Card className="border-amber-200 bg-white/80 backdrop-blur-sm">
             <CardHeader className="pb-3">
               <CardTitle className="flex items-center gap-2 text-amber-800">
@@ -43,9 +66,6 @@ export default function InvitationPage2() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <p className="text-gray-700 text-sm">
-                Join us in our traditional colors! Download the style guide and submit your RSVP online.
-              </p>
               <div>
                                 <div className="space-y-3 text-amber-900 text-sm">
                                     <div>
@@ -209,7 +229,7 @@ export default function InvitationPage2() {
               </Button>
 
               <p className="text-xs text-center text-gray-500">
-                Questions? Call us at +123-456-7890
+                Questions? Call us at +234 803 353 6743
               </p>
             </CardContent>
           </Card>
