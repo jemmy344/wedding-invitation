@@ -94,13 +94,13 @@ export default function InvitationPage1() {
 
         {/* Names */}
         <div className="mb-2 leading-none space-y-1">
-          <h3 className="text-2xl sm:text-4xl text-amber-800 sm:pl-[35%] text-center sm:text-left" style={{ fontFamily: 'Playlist Script, cursive', fontStyle: 'italic' }}>
+          <h3 className="text-3xl sm:text-5xl text-amber-800 sm:pl-[35%] text-center sm:text-left" style={{ fontFamily: 'Playlist Script, cursive', fontStyle: 'italic' }}>
             Jemimah
           </h3>
           <div className="text-4xl sm:text-7xl font-bold text-amber-800 sm:pl-[50%] text-center sm:text-left" style={{ fontFamily: 'Brittany, cursive', fontStyle: 'italic' }}>
             &
           </div>
-          <h3 className="text-2xl sm:text-4xl text-amber-800 text-center sm:pl-[35%]" style={{ fontFamily: 'Playlist Script, cursive', fontStyle: 'italic' }}>
+          <h3 className="text-3xl sm:text-5xl text-amber-800 text-center sm:pl-[35%]" style={{ fontFamily: 'Playlist Script, cursive', fontStyle: 'italic' }}>
             Adeola
           </h3>
         </div>
@@ -184,7 +184,7 @@ export default function InvitationPage1() {
           <p className="text-black text-center sm:text-right text-base sm:text-lg" style={{ fontFamily: 'Glacial Indifference, serif' }}>
             Your presence would mean the world to us!
           </p>
-          <p className="text-black text-center sm:text-right text-base sm:text-lg" style={{ fontFamily: 'Glacial Indifference, serif' }}>
+          <p className="text-black text-center sm:text-right text-sm sm:text-base" style={{ fontFamily: 'Glacial Indifference, serif' }}>
             Kindly RSVP by 18 September 2025
           </p>
         </div>

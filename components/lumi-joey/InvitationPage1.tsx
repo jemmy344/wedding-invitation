@@ -152,7 +152,7 @@ export default function InvitationPage1() {
                     <p className="text-black text-center sm:text-right text-base sm:text-lg" style={{ fontFamily: 'Glacial Indifference, serif' }}>
                         Your presence would mean the world to us!
                     </p>
-                    <p className="text-black text-center sm:text-right text-base sm:text-lg" style={{ fontFamily: 'Glacial Indifference, serif' }}>
+                    <p className="text-black text-center sm:text-right text-sm sm:text-base" style={{ fontFamily: 'Glacial Indifference, serif' }}>
                         Kindly RSVP by 18 September 2025
                     </p>
                 </div>

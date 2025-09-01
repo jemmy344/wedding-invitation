@@ -158,7 +158,7 @@ export default function InvitationPage2() {
                                     value={guestName}
                                     onChange={(e) => setGuestName(e.target.value)}
                                     placeholder="Enter your full name"
-                                    className="border-amber-200 focus:border-amber-400"
+                                    className="border-amber-200 focus:border-amber-400 text-gray-600"
                                 />
                             </div>
 
