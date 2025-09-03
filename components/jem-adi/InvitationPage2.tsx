@@ -9,12 +9,36 @@ import { Separator } from '../ui/separator';
 
 export default function InvitationPage2() {
   const [guestName, setGuestName] = useState('');
+  const [guestEmail, setGuestEmail] = useState('');
+  const [guestWhatsapp, setGuestWhatsapp] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [whatsappError, setWhatsappError] = useState('');
   const [rsvpResponse, setRsvpResponse] = useState('');
   const [plusOneRequested, setPlusOneRequested] = useState(false);
 
   const handleSubmitRSVP = () => {
     // This would connect to Supabase in a real implementation
-    console.log('RSVP submitted:', { guestName, rsvpResponse, plusOneRequested });
+    let valid = true;
+    setEmailError('');
+    setWhatsappError('');
+    // Email validation
+    if (guestEmail && !/^\S+@\S+\.\S+$/.test(guestEmail)) {
+      setEmailError('Please enter a valid email address.');
+      valid = false;
+    }
+    // WhatsApp validation (simple: must be at least 8 digits)
+    if (guestWhatsapp && !/^\+?\d{8,}$/.test(guestWhatsapp.replace(/\D/g, ''))) {
+      setWhatsappError('Please enter a valid WhatsApp number.');
+      valid = false;
+    }
+    // Require at least one
+    if (!guestEmail && !guestWhatsapp) {
+      setEmailError('Please provide at least one contact method.');
+      setWhatsappError('Please provide at least one contact method.');
+      valid = false;
+    }
+    if (!valid) return;
+    console.log('RSVP submitted:', { guestName, guestEmail, guestWhatsapp, rsvpResponse, plusOneRequested });
     alert('Thank you for your RSVP! We will be in touch soon.');
   }; 
 
@@ -164,6 +188,32 @@ export default function InvitationPage2() {
                   className="bg-white text-gray-600"
                 />
               </div>
+              {/* Guest Email */}
+              <div className="space-y-2">
+                <Label htmlFor="guestEmail" className="text-gray-600">Email (for accreditation)</Label>
+                <Input
+                  id="guestEmail"
+                  value={guestEmail}
+                  onChange={(e) => setGuestEmail(e.target.value)}
+                  placeholder="Enter your email address"
+                  className="bg-white text-gray-600"
+                  type="email"
+                />
+                {emailError && <p className="text-xs text-red-600 mt-1">{emailError}</p>}
+              </div>
+              {/* Guest WhatsApp */}
+              <div className="space-y-2">
+                <Label htmlFor="guestWhatsapp" className="text-gray-600">WhatsApp Number (for accreditation)</Label>
+                <Input
+                  id="guestWhatsapp"
+                  value={guestWhatsapp}
+                  onChange={(e) => setGuestWhatsapp(e.target.value)}
+                  placeholder="Enter your WhatsApp number"
+                  className="bg-white text-gray-600"
+                  type="tel"
+                />
+                {whatsappError && <p className="text-xs text-red-600 mt-1">{whatsappError}</p>}
+              </div>
 
               <Separator />
 
@@ -172,19 +222,19 @@ export default function InvitationPage2() {
                 <Label className="text-gray-600">Will you be attending?</Label>
                 <RadioGroup value={rsvpResponse} onValueChange={setRsvpResponse}>
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="yes" id="yes" />
+                    <RadioGroupItem value="yes" id="yes" className="data-[state=checked]:bg-[#7B3F00] " />
                     <Label htmlFor="yes" className="text-green-700 font-medium">
                       ✓ Yes, I&apos;ll be there!
                     </Label>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="no" id="no" />
+                    <RadioGroupItem value="no" id="no" className="data-[state=checked]:bg-[#7B3F00] " />
                     <Label htmlFor="no" className="text-red-700 font-medium">
                       ✗ Sorry, can&apos;t make it
                     </Label>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="maybe" id="maybe" />
+                    <RadioGroupItem value="maybe" id="maybe" className="data-[state=checked]:bg-[#7B3F00] " />
                     <Label htmlFor="maybe" className="text-amber-700 font-medium">
                       ? Maybe (will confirm later)
                     </Label>

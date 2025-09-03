@@ -8,12 +8,36 @@ import { Separator } from '../ui/separator';
 
 export default function InvitationPage2() {
     const [guestName, setGuestName] = useState('');
+    const [guestEmail, setGuestEmail] = useState('');
+    const [guestWhatsapp, setGuestWhatsapp] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [whatsappError, setWhatsappError] = useState('');
     const [rsvpResponse, setRsvpResponse] = useState('');
     const [plusOneRequested, setPlusOneRequested] = useState(false);
 
     const handleSubmitRSVP = () => {
         // This would connect to Supabase in a real implementation
-        console.log('RSVP submitted:', { guestName, rsvpResponse, plusOneRequested });
+        let valid = true;
+        setEmailError('');
+        setWhatsappError('');
+        // Email validation
+        if (guestEmail && !/^\S+@\S+\.\S+$/.test(guestEmail)) {
+            setEmailError('Please enter a valid email address.');
+            valid = false;
+        }
+        // WhatsApp validation (simple: must be at least 8 digits)
+        if (guestWhatsapp && !/^\+?\d{8,}$/.test(guestWhatsapp.replace(/\D/g, ''))) {
+            setWhatsappError('Please enter a valid WhatsApp number.');
+            valid = false;
+        }
+        // Require at least one
+        if (!guestEmail && !guestWhatsapp) {
+            setEmailError('Please provide at least one contact method.');
+            setWhatsappError('Please provide at least one contact method.');
+            valid = false;
+        }
+        if (!valid) return;
+        console.log('RSVP submitted:', { guestName, guestEmail, guestWhatsapp, rsvpResponse, plusOneRequested });
         alert('Thank you for your RSVP! We will be in touch soon.');
     };
 
@@ -70,7 +94,7 @@ export default function InvitationPage2() {
                                     <div>
                                         <span className="font-bold">Men:</span> Taupe/neutral outfit with a gold fila – simple, sharp, and coordinated.
                                     </div>
-                                    
+
                                 </div>
 
                             </div>
@@ -120,7 +144,7 @@ export default function InvitationPage2() {
                                     <div className="text-amber-800">
                                         ⏳ Deadline for Aso-Ebi Payments: October 7th
                                     </div>
-                                      <div className="text-amber-800">
+                                    <div className="text-amber-800">
                                         As we prepare for this joyous occasion, we humbly ask for your prayers 🙏
                                     </div>
                                 </div>
@@ -139,26 +163,26 @@ export default function InvitationPage2() {
                         </CardHeader>
                         <CardContent>
                             <p className="text-gray-700 text-sm">
-                               Your presence at our wedding is the greatest gift of all. Should you wish to honor us with a gift, a contribution toward our future together would be warmly appreciated.
+                                Your presence at our wedding is the greatest gift of all. Should you wish to honor us with a gift, a contribution toward our future together would be warmly appreciated.
                             </p>
                             <div>
-                                        <span className="font-medium text-gray-700">Payment Accounts:</span>
-                                        <ul className="list-disc ml-6 mt-1 text-gray-700">
-                                            <li>
-                                                <span className="font-semibold">Oluwapelumi Oladimeji</span>
-                                                <br />
-                                                <span>Sort Code: <span className="font-mono">60-84-07</span></span>
-                                                <br />
-                                                <span>Account number: <span className="font-mono">27699150</span></span>
-                                            </li>
-                                            <li className="mt-2">
-                                                <span className="font-semibold">Joseph Adegboyega</span>
-                                                <br />
-                                                <span>Access Bank Nigeria — <span className="font-mono">0763445951</span></span>
-                                                
-                                            </li>
-                                        </ul>
-                                    </div>
+                                <span className="font-medium text-gray-700">Payment Accounts:</span>
+                                <ul className="list-disc ml-6 mt-1 text-gray-700">
+                                    <li>
+                                        <span className="font-semibold">Oluwapelumi Oladimeji</span>
+                                        <br />
+                                        <span>Sort Code: <span className="font-mono">60-84-07</span></span>
+                                        <br />
+                                        <span>Account number: <span className="font-mono">27699150</span></span>
+                                    </li>
+                                    <li className="mt-2">
+                                        <span className="font-semibold">Joseph Adegboyega</span>
+                                        <br />
+                                        <span>Access Bank Nigeria — <span className="font-mono">0763445951</span></span>
+
+                                    </li>
+                                </ul>
+                            </div>
                         </CardContent>
                     </Card>
 
@@ -182,6 +206,32 @@ export default function InvitationPage2() {
                                     placeholder="Enter your full name"
                                     className="border-amber-200 focus:border-amber-400 text-gray-600"
                                 />
+                            </div>
+                            {/* Guest Email */}
+                            <div className="space-y-2">
+                                <Label htmlFor="guestEmail" className="text-gray-600">Email (for accreditation)</Label>
+                                <Input
+                                    id="guestEmail"
+                                    value={guestEmail}
+                                    onChange={(e) => setGuestEmail(e.target.value)}
+                                    placeholder="Enter your email address"
+                                    className="border-amber-200 focus:border-amber-400 text-gray-600"
+                                    type="email"
+                                />
+                                {emailError && <p className="text-xs text-red-600 mt-1">{emailError}</p>}
+                            </div>
+                            {/* Guest WhatsApp */}
+                            <div className="space-y-2">
+                                <Label htmlFor="guestWhatsapp" className="text-gray-600">WhatsApp Number (for accreditation)</Label>
+                                <Input
+                                    id="guestWhatsapp"
+                                    value={guestWhatsapp}
+                                    onChange={(e) => setGuestWhatsapp(e.target.value)}
+                                    placeholder="Enter your WhatsApp number"
+                                    className="border-amber-200 focus:border-amber-400 text-gray-600"
+                                    type="tel"
+                                />
+                                {whatsappError && <p className="text-xs text-red-600 mt-1">{whatsappError}</p>}
                             </div>
 
                             <Separator />
@@ -212,27 +262,27 @@ export default function InvitationPage2() {
                             <div className="space-y-3 text-gray-600">
                                 <Label>Plus-One Request</Label>
                                 <div className="bg-amber-50 p-4 rounded-lg">
-                  <h4 className="font-semibold text-amber-900 mb-2">Plus-One Clause:</h4>
-                  <p className="text-sm text-amber-800 mb-3">
-                    &quot;This invitation admits only one. If you&apos;d like to attend with a plus one, kindly indicate — approval will be sent accordingly.&quot;
-                  </p>
-                  <label className="flex items-center">
-                    <input
-                      type="checkbox"
-                      checked={plusOneRequested}
-                      onChange={(e) => setPlusOneRequested(e.target.checked)}
-                      className="mr-2 text-amber-600"
-                    />
-                    <span className="text-amber-800">I would like to request a plus-one</span>
-                  </label>
-                </div>
+                                    <h4 className="font-semibold text-amber-900 mb-2">Plus-One Clause:</h4>
+                                    <p className="text-sm text-amber-800 mb-3">
+                                        &quot;This invitation admits only one. If you&apos;d like to attend with a plus one, kindly indicate — approval will be sent accordingly.&quot;
+                                    </p>
+                                    <label className="flex items-center">
+                                        <input
+                                            type="checkbox"
+                                            checked={plusOneRequested}
+                                            onChange={(e) => setPlusOneRequested(e.target.checked)}
+                                            className="mr-2 text-amber-600"
+                                        />
+                                        <span className="text-amber-800">I would like to request a plus-one</span>
+                                    </label>
+                                </div>
 
-                <div className="bg-red-50 p-4 rounded-lg border border-red-200">
-                  <p className="text-sm text-red-800 font-medium">
-                    ⚠️ No Kids Allowed - This is an adult-only celebration
-                  </p>
-                </div>
-                                
+                                <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+                                    <p className="text-sm text-red-800 font-medium">
+                                        ⚠️ No Kids Allowed - This is an adult-only celebration
+                                    </p>
+                                </div>
+
                             </div>
 
                             <Separator />
