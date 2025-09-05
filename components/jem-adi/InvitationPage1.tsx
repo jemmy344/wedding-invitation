@@ -79,11 +79,11 @@ export default function InvitationPage1() {
           The families of
         </p>
         <p
-          className="text-black text-lg sm:text-2xl font-bold mb-2 flex flex-col sm:flex-row sm:justify-between text-center sm:text-left"
+          className="text-black text-lg sm:text-2xl font-bold mb-2 flex flex-col sm:flex-row sm:justify-center gap-4 text-center sm:text-left"
           style={{ fontFamily: 'Glacial Indifference, serif' }}
         >
-          <span>Mr Samson & Mrs Oluwakemi Jacobs</span>
-          <span>Mr Akinsola & Mrs Grace Akinwole</span>
+          <span>Mr & Mrs Jacobs</span>
+          <span>Mr & Mrs Akinwole</span>
         </p>
         <h3 className="text-2xl text-amber-800 text-center sm:pl-[5%]" style={{ fontFamily: 'Playlist Script, cursive', fontStyle: 'italic' }}>
           cordially invites you

@@ -82,55 +82,6 @@ export default function InvitationPage2() {
               </div>
             </CardContent>
           </Card>
-          <Card className="border-amber-200 bg-white/80 backdrop-blur-sm">
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-amber-800">
-                <QrCode className="w-5 h-5" />
-                Aso-Ebi Details
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div>
-                                <div className="space-y-3 text-amber-900 text-sm">
-                                    <div>
-                                        <span className="font-bold">Ladies:</span> Lace with Aso-Oke Gele — <span className="font-semibold">₦60,000</span>
-                                        <br />
-                                        Lace Only — <span className="font-semibold">₦50,000</span>
-                                        <br />
-                                        Ankara with Aso-oke Gele — <span className="font-semibold">₦24,000</span>
-                                        <br />
-                                        Complete Aso-Oke — <span className="font-semibold">₦20,000</span>
-
-                                    </div>
-                                    <div>
-                                        <span className="font-bold">Men:</span> Cap Only — <span className="font-semibold">₦2,500</span>
-                                        
-                                    </div>
-                                    <div>
-                                        <span className="font-medium">Payment Accounts:</span>
-                                        <ul className="list-disc ml-6 mt-1">
-                                            <li>
-                                                <span className="font-semibold">Crown elite global services</span>
-                                                <br />
-                                                <span>GTBank — <span className="font-mono">3001581849</span></span>
-                                                <br />
-                                                <span>WhatsApp proof: <span className="font-mono">+234 803 353 6743</span></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="italic text-amber-700">
-                                        Kindly send proof of payment via WhatsApp to the above contact.
-                                    </div>
-                                    <div className="text-amber-800">
-                                        ⏳ Deadline for Aso-Ebi Payments: October 7th
-                                    </div>
-                                     
-                                </div>
-
-                            </div>
-              
-            </CardContent>
-          </Card>
 
           {/* Gifting Information */}
           <Card className="border-amber-200 bg-white/80 backdrop-blur-sm">
