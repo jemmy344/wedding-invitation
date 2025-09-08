@@ -8,19 +8,29 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Separator } from '../ui/separator';
 
 export default function InvitationPage2() {
-  const [guestName, setGuestName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [guestEmail, setGuestEmail] = useState('');
   const [guestWhatsapp, setGuestWhatsapp] = useState('');
   const [emailError, setEmailError] = useState('');
   const [whatsappError, setWhatsappError] = useState('');
   const [rsvpResponse, setRsvpResponse] = useState('');
   const [plusOneRequested, setPlusOneRequested] = useState(false);
+  const [guestType, setGuestType] = useState('');
 
   const handleSubmitRSVP = () => {
-    // This would connect to Supabase in a real implementation
     let valid = true;
     setEmailError('');
     setWhatsappError('');
+    // Validate required fields
+    if (!firstName.trim()) {
+      setEmailError('First name is required.');
+      valid = false;
+    }
+    if (!lastName.trim()) {
+      setWhatsappError('Last name is required.');
+      valid = false;
+    }
     // Email validation
     if (guestEmail && !/^\S+@\S+\.\S+$/.test(guestEmail)) {
       setEmailError('Please enter a valid email address.');
@@ -31,16 +41,21 @@ export default function InvitationPage2() {
       setWhatsappError('Please enter a valid WhatsApp number.');
       valid = false;
     }
-    // Require at least one
+    // Require at least one contact method
     if (!guestEmail && !guestWhatsapp) {
       setEmailError('Please provide at least one contact method.');
       setWhatsappError('Please provide at least one contact method.');
       valid = false;
     }
+    // Require guest type
+    if (!guestType) {
+      alert('Please select your relationship to the couple.');
+      valid = false;
+    }
     if (!valid) return;
-    console.log('RSVP submitted:', { guestName, guestEmail, guestWhatsapp, rsvpResponse, plusOneRequested });
+    console.log('RSVP submitted:', { firstName, lastName, guestEmail, guestWhatsapp, guestType, rsvpResponse, plusOneRequested });
     alert('Thank you for your RSVP! We will be in touch soon.');
-  }; 
+  };
 
   return (
     <div className="w-full bg-gradient-to-br from-orange-300 via-orange-100 to-orange-50 rounded-lg shadow-xl p-8">
@@ -55,9 +70,9 @@ export default function InvitationPage2() {
         <p className="text-gray-700">Important Information for Our Special Day</p>
       </div>
 
-  <div className="grid md:grid-cols-2 gap-6">
-  {/* Left Column */}
-  <div className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-6">
+        {/* Left Column */}
+        <div className="space-y-6">
           {/* Color of the Day Card */}
           <Card className="border-amber-200 bg-white/80 backdrop-blur-sm">
             <CardHeader className="pb-3">
@@ -117,7 +132,36 @@ export default function InvitationPage2() {
             </CardContent>
           </Card>
 
-        
+          {/* Guest Policies Card (moved from right column) */}
+          <Card className="border-amber-200 bg-white/80 backdrop-blur-sm">
+            <CardHeader className="pb-3">
+              <CardTitle className="flex items-center gap-2 text-amber-800">
+                <Users className="w-5 h-5" />
+                Guest Policies
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {/* No Kids Policy */}
+              <div className="flex items-start gap-3 p-3 bg-amber-50 rounded-lg">
+                <Baby className="w-5 h-5 text-amber-600 mt-0.5" />
+                <div>
+                  <p className="font-medium text-amber-800 text-sm">Adults Only Celebration</p>
+                  <p className="text-gray-700 text-sm">
+                    Respectfully, this event is for adults only.
+                  </p>
+                </div>
+              </div>
+
+              {/* Plus One Policy */}
+              <div className="p-3 bg-amber-50 rounded-lg">
+                <p className="font-medium text-amber-800 text-sm mb-2">Plus-One Policy</p>
+                <p className="text-gray-700 text-sm">
+                  This invitation admits only one. If you&apos;d like to attend with a plus one, 
+                  kindly indicate below — approval will be sent accordingly.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Right Column - RSVP Form */}
@@ -128,16 +172,53 @@ export default function InvitationPage2() {
               <p className="text-center text-gray-600 text-sm">Please respond by September 15, 2026</p>
             </CardHeader>
             <CardContent className="space-y-6">
-              {/* Guest Name */}
+              {/* First Name */}
               <div className="space-y-2">
-                <Label htmlFor="guestName" className="text-gray-600">Your Name</Label>
+                <Label htmlFor="firstName" className="text-gray-600">First Name <span className="text-red-600">*</span></Label>
                 <Input
-                  id="guestName"
-                  value={guestName}
-                  onChange={(e) => setGuestName(e.target.value)}
-                  placeholder="Enter your full name"
+                  id="firstName"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  placeholder="Enter your first name"
                   className="bg-white text-gray-600"
+                  required
                 />
+                {!firstName.trim() && emailError === 'First name is required.' && (
+                  <p className="text-xs text-red-600 mt-1">{emailError}</p>
+                )}
+              </div>
+              {/* Last Name */}
+              <div className="space-y-2">
+                <Label htmlFor="lastName" className="text-gray-600">Last Name <span className="text-red-600">*</span></Label>
+                <Input
+                  id="lastName"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  placeholder="Enter your last name"
+                  className="bg-white text-gray-600"
+                  required
+                />
+                {!lastName.trim() && whatsappError === 'Last name is required.' && (
+                  <p className="text-xs text-red-600 mt-1">{whatsappError}</p>
+                )}
+              </div>
+              {/* Guest Type Dropdown */}
+              <div className="space-y-2">
+                <Label htmlFor="guestType" className="text-gray-600">I am a...</Label>
+                <select
+                  id="guestType"
+                  value={guestType}
+                  onChange={(e) => setGuestType(e.target.value)}
+                  className="bg-white text-gray-600 border rounded px-3 py-2 w-full"
+                  required
+                >
+                  <option value="">Select...</option>
+                  <option value="bride-family">Bride&apos;s Family</option>
+                  <option value="groom-family">Groom&apos;s Family</option>
+                  <option value="bride-friend">Bride&apos;s Friend</option>
+                  <option value="groom-friend">Groom&apos;s Friend</option>
+                  <option value="couple">Couple</option>
+                </select>
               </div>
               {/* Guest Email */}
               <div className="space-y-2">
@@ -224,7 +305,7 @@ export default function InvitationPage2() {
               <Button 
                 onClick={handleSubmitRSVP}
                 className="w-full bg-amber-800 hover:bg-amber-700 text-white"
-                disabled={!guestName || !rsvpResponse}
+                disabled={!firstName.trim() || !lastName.trim() || !guestType || !rsvpResponse}
               >
                 Submit RSVP
               </Button>
@@ -234,36 +315,6 @@ export default function InvitationPage2() {
               </p>
             </CardContent>
           </Card>
-           {/* Guest Policies Card (duplicated from left column) */}
-            <Card className="border-amber-200 bg-white/80 backdrop-blur-sm mt-6">
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center gap-2 text-amber-800">
-                  <Users className="w-5 h-5" />
-                  Guest Policies
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {/* No Kids Policy */}
-                <div className="flex items-start gap-3 p-3 bg-amber-50 rounded-lg">
-                  <Baby className="w-5 h-5 text-amber-600 mt-0.5" />
-                  <div>
-                    <p className="font-medium text-amber-800 text-sm">Adults Only Celebration</p>
-                    <p className="text-gray-700 text-sm">
-                      Respectfully, this event is for adults only.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Plus One Policy */}
-                <div className="p-3 bg-amber-50 rounded-lg">
-                  <p className="font-medium text-amber-800 text-sm mb-2">Plus-One Policy</p>
-                  <p className="text-gray-700 text-sm">
-                    This invitation admits only one. If you&apos;d like to attend with a plus one, 
-                    kindly indicate below — approval will be sent accordingly.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
         </div>
       </div>
 

@@ -7,19 +7,29 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Separator } from '../ui/separator';
 
 export default function InvitationPage2() {
-    const [guestName, setGuestName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [guestEmail, setGuestEmail] = useState('');
     const [guestWhatsapp, setGuestWhatsapp] = useState('');
     const [emailError, setEmailError] = useState('');
     const [whatsappError, setWhatsappError] = useState('');
     const [rsvpResponse, setRsvpResponse] = useState('');
     const [plusOneRequested, setPlusOneRequested] = useState(false);
+    const [guestType, setGuestType] = useState('');
 
     const handleSubmitRSVP = () => {
-        // This would connect to Supabase in a real implementation
         let valid = true;
         setEmailError('');
         setWhatsappError('');
+        // Validate required fields
+        if (!firstName.trim()) {
+            setEmailError('First name is required.');
+            valid = false;
+        }
+        if (!lastName.trim()) {
+            setWhatsappError('Last name is required.');
+            valid = false;
+        }
         // Email validation
         if (guestEmail && !/^\S+@\S+\.\S+$/.test(guestEmail)) {
             setEmailError('Please enter a valid email address.');
@@ -30,14 +40,19 @@ export default function InvitationPage2() {
             setWhatsappError('Please enter a valid WhatsApp number.');
             valid = false;
         }
-        // Require at least one
+        // Require at least one contact method
         if (!guestEmail && !guestWhatsapp) {
             setEmailError('Please provide at least one contact method.');
             setWhatsappError('Please provide at least one contact method.');
             valid = false;
         }
+        // Require guest type
+        if (!guestType) {
+            alert('Please select your relationship to the couple.');
+            valid = false;
+        }
         if (!valid) return;
-        console.log('RSVP submitted:', { guestName, guestEmail, guestWhatsapp, rsvpResponse, plusOneRequested });
+        console.log('RSVP submitted:', { firstName, lastName, guestEmail, guestWhatsapp, guestType, rsvpResponse, plusOneRequested });
         alert('Thank you for your RSVP! We will be in touch soon.');
     };
 
@@ -196,16 +211,53 @@ export default function InvitationPage2() {
                             <p className="text-center text-gray-600 text-sm">Please respond by September 15, 2026</p>
                         </CardHeader>
                         <CardContent className="space-y-6">
-                            {/* Guest Name */}
+                            {/* First Name */}
                             <div className="space-y-2">
-                                <Label htmlFor="guestName" className="text-gray-600">Guest Name *</Label>
+                                <Label htmlFor="firstName" className="text-gray-600">First Name <span className="text-red-600">*</span></Label>
                                 <Input
-                                    id="guestName"
-                                    value={guestName}
-                                    onChange={(e) => setGuestName(e.target.value)}
-                                    placeholder="Enter your full name"
+                                    id="firstName"
+                                    value={firstName}
+                                    onChange={(e) => setFirstName(e.target.value)}
+                                    placeholder="Enter your first name"
                                     className="border-amber-200 focus:border-amber-400 text-gray-600"
+                                    required
                                 />
+                                {!firstName.trim() && emailError === 'First name is required.' && (
+                                    <p className="text-xs text-red-600 mt-1">{emailError}</p>
+                                )}
+                            </div>
+                            {/* Last Name */}
+                            <div className="space-y-2">
+                                <Label htmlFor="lastName" className="text-gray-600">Last Name <span className="text-red-600">*</span></Label>
+                                <Input
+                                    id="lastName"
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
+                                    placeholder="Enter your last name"
+                                    className="border-amber-200 focus:border-amber-400 text-gray-600"
+                                    required
+                                />
+                                {!lastName.trim() && whatsappError === 'Last name is required.' && (
+                                    <p className="text-xs text-red-600 mt-1">{whatsappError}</p>
+                                )}
+                            </div>
+                            {/* Guest Type Dropdown */}
+                            <div className="space-y-2">
+                                <Label htmlFor="guestType" className="text-gray-600">I am a...</Label>
+                                <select
+                                    id="guestType"
+                                    value={guestType}
+                                    onChange={(e) => setGuestType(e.target.value)}
+                                    className="bg-white text-gray-600 border rounded px-3 py-2 w-full"
+                                    required
+                                >
+                                    <option value="">Select...</option>
+                                    <option value="bride-family">Bride&apos;s Family</option>
+                                    <option value="groom-family">Groom&apos;s Family</option>
+                                    <option value="bride-friend">Bride&apos;s Friend</option>
+                                    <option value="groom-friend">Groom&apos;s Friend</option>
+                                    <option value="couple">Couple</option>
+                                </select>
                             </div>
                             {/* Guest Email */}
                             <div className="space-y-2">
@@ -248,7 +300,7 @@ export default function InvitationPage2() {
                                                 value={option}
                                                 checked={rsvpResponse === option}
                                                 onChange={(e) => setRsvpResponse(e.target.value)}
-                                                className="mr-2 text-amber-600"
+                                                className="mr-2 accent-[#7B3F00]"
                                             />
                                             <span className="text-amber-800">{option}</span>
                                         </label>
@@ -271,7 +323,7 @@ export default function InvitationPage2() {
                                             type="checkbox"
                                             checked={plusOneRequested}
                                             onChange={(e) => setPlusOneRequested(e.target.checked)}
-                                            className="mr-2 text-amber-600"
+                                            className="mr-2 accent-[#7B3F00]"
                                         />
                                         <span className="text-amber-800">I would like to request a plus-one</span>
                                     </label>
@@ -291,7 +343,7 @@ export default function InvitationPage2() {
                             <Button
                                 onClick={handleSubmitRSVP}
                                 className="w-full bg-amber-800 hover:bg-amber-700 text-white"
-                                disabled={!guestName || !rsvpResponse}
+                                disabled={!firstName.trim() || !lastName.trim() || !guestType || !rsvpResponse}
                             >
                                 Submit RSVP
                             </Button>
